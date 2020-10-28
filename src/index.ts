@@ -5,10 +5,6 @@ import * as bodyParser from "body-parser";
 import { Request, Response } from "express";
 import { Routes } from "./routes";
 import { Patient } from "./entity/Patient";
-import { Age } from "./entity/Age";
-import { Gender } from "./entity/Gender";
-import { Language } from "./entity/Language";
-import { Surgery } from "./entity/Surgery";
 
 createConnection()
   .then(async (connection) => {
@@ -45,39 +41,18 @@ createConnection()
     // start express server
     app.listen(3000);
 
-    const age = await connection.manager.findOne(Age, {
-      where: {
-        range: "0-8",
-      },
-    });
-    const gender = await connection.manager.findOne(Gender, {
-      where: {
-        name: "Female",
-      },
-    });
-    const language = await connection.manager.findOne(Language, {
-      where: {
-        name: "Hebrew",
-      },
-    });
-    const surgery = await connection.manager.findOne(Surgery, {
-      where: {
-        name: "Leg Surgery",
-      },
-    });
-
-    // insert new patients for test
-    await connection.manager.save(
-      connection.manager.create(Patient, {
-        age: age,
-        gender: gender,
-        language: language,
-        surgery: surgery,
-      })
-    );
+    // // insert new patients for test
+    // await connection.manager.save(
+    //   connection.manager.create(Patient, {
+    //     age: { range: "0-8" },
+    //     gender: { name: "Female" },
+    //     language: { name: "Hebrew" },
+    //     surgery: { name: "Leg Surgery" },
+    //   })
+    // );
 
     console.log(
-      "Express server has started on port 3000. Open http://localhost:3000/users to see results"
+      "Express server has started on port 3000. Open http://localhost:3000/patients to see results"
     );
   })
   .catch((error) => console.log(error));

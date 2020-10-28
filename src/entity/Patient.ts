@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, JoinColumn, OneToOne } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, JoinColumn, ManyToOne } from "typeorm";
 import { Age } from "./Age";
 import { Gender } from "./Gender";
 import { Language } from "./Language";
@@ -9,19 +9,19 @@ export class Patient {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @OneToOne(() => Gender)
+  @ManyToOne(() => Gender)
   @JoinColumn()
   gender: Gender;
 
-  @OneToOne(() => Age)
+  @ManyToOne(() => Age)
   @JoinColumn()
   age: Age;
 
-  @OneToOne(() => Language)
+  @ManyToOne(() => Language)
   @JoinColumn()
   language: Language;
 
-  @OneToOne(() => Surgery)
+  @ManyToOne(() => Surgery)
   @JoinColumn()
   surgery: Surgery;
 }
