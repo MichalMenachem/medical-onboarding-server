@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, PrimaryColumn } from "typeorm";
+import { Entity, Column, PrimaryColumn } from "typeorm";
 
 @Entity()
 export class Age {
@@ -7,4 +7,10 @@ export class Age {
 
   @Column()
   iconPath: string;
+
+  @Column()
+  min: number;
+
+  @Column()
+  max: number;
 }
