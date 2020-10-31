@@ -4,7 +4,6 @@ import * as express from "express";
 import * as bodyParser from "body-parser";
 import { Request, Response } from "express";
 import { Routes } from "./routes";
-import { Patient } from "./entity/Patient";
 import * as cors from "cors";
 
 createConnection()
@@ -40,21 +39,8 @@ createConnection()
       );
     });
 
-    // setup express app here
-    // ...
-
     // start express server
     app.listen(3000);
-
-    // // insert new patients for test
-    // await connection.manager.save(
-    //   connection.manager.create(Patient, {
-    //     age: { range: "0-8" },
-    //     gender: { name: "Female" },
-    //     language: { name: "Hebrew" },
-    //     surgery: { name: "Leg Surgery" },
-    //   })
-    // );
 
     console.log(
       "Express server has started on port 3000. Open http://localhost:3000/patients to see results"
